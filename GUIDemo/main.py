@@ -6,9 +6,11 @@
 import FreeSimpleGUI as sg
 
 text=sg.Text("Hello world")
-input_text=sg.InputText(tooltip="Enter Value")
-window=sg.Window("My To-Do App",layout=[[text,input_text]])
-window.read()
+input_text=sg.InputText(tooltip="Enter Value",key="text")
+done_button=sg.Button("Done")
+window=sg.Window("My To-Do App",layout=[[text],[input_text,done_button]])
+event,doc=window.read()
+print(doc)
 window.close()
 
 
