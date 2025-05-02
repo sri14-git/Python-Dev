@@ -11,8 +11,15 @@ def add_text():
 
 st.title("Demo web app with Interactive Interface")
 st.subheader("Trying with File Handling")
-st.text_input(label="",placeholder="Type Anything",key="text",on_change=add_text)
-texts=fc.read_inFile()
-for text in texts:
-    st.checkbox(text)
 
+texts=fc.read_inFile()
+updated_texts = []
+for i, text in enumerate(texts):
+    check = st.checkbox(text, key=text)
+    if not check:
+        updated_texts.append(text)
+    else:
+        del st.session_state[text]
+        fc.write_inFile(updated_texts)
+        st.rerun()
+st.text_input(label="",placeholder="Type Anything",key="text",on_change=add_text)
