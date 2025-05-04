@@ -3,7 +3,7 @@ import requests as rq
 
 
 
-API="f1d1f33de2890face944c1b5436dcff2"
+API=""
 def getdata(place,forecast_days=None):
     url="https://api.openweathermap.org/data/2.5" \
         f"/forecast?q={place}" \
